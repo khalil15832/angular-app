@@ -8,7 +8,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-image-grid',
   templateUrl: './image-grid.component.html',
-  styleUrls: ['./image-grid.component.scss']
+  styleUrls: ['./image-grid.component.scss'],
+  styles: [
+    `@media (min-width: 992px) {
+      .col-xl,
+      .col-lg {
+        max-width: ${100 / Settings.ImagesPerRow}%;
+      }
+    }`,
+  ]
 })
 export class ImageGridComponent implements OnChanges {
 
