@@ -1,0 +1,10 @@
+<div class="card text-center">
+  <div class="card-header">
+    <h2 class="float-left">Image Gallery</h2>
+    <app-image-uploader (uploaded)="onUploaded($event)" class="float-right"></app-image-uploader>
+  </div>
+  <div class="card-body">
+    <p class="lead text-center" *ngIf="!images.length">Please click on the add button (+) to add a few images to your gallery!</p>
+    <app-image-grid [images]="images" (changed)="images = $event" *ngIf="images.length"></app-image-grid>
+  </div>
+</div>

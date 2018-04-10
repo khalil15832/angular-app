@@ -1,0 +1,4 @@
+<input #imageFile name="imageFile" type="file" ngModel (change)="onChange($event)" accept="image/*" multiple="multiple" hidden>
+<button type="button" class="btn btn-danger rounded-circle btn-uploader" (click)="imageFile.click()">
+  <i [class]="icon"></i>
+</button>

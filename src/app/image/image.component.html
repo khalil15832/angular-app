@@ -1,0 +1,37 @@
+<div class="card border-light text-center">
+  <a class="card-link" (click)="openModal(template)">
+    <img class="card-img-top img-fluid gallery-image" [src]="model.source">
+    <div class="card-footer text-muted">
+      {{model.dateCreated | date}}
+    </div>
+  </a>
+</div>
+
+<ng-template #template>
+  <div class="modal-header bg-light">
+    <h4 class="modal-title pull-left">{{modalModel.name}}</h4>
+    <button type="button" class="btn btn-danger rounded-circle pull-right btn-remove" aria-label="Close" (click)="removeImage(modalModel.id)">
+      <i class="fa fa-trash fa-2x"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row align-items-center">
+      <div class="col-1">
+        <a [class.disabled]="prevDisabled" (click)="!prevDisabled && prevImage()">
+          <i class="fa fa-chevron-left fa-3x"></i>
+        </a>
+      </div>
+      <div class="col-10">
+        <img class="modal-image img-fluid" [src]="modalModel.source">
+      </div>
+      <div class="col-1">
+        <a [class.disabled]="nextDisabled" (click)="!nextDisabled && nextImage()">
+          <i class="fa fa-chevron-right fa-3x"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer bg-light">
+    <h5 class="text-center mx-auto text-muted">Date Created: {{modalModel.dateCreated | date}}</h5>
+  </div>
+</ng-template>
