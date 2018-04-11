@@ -4,6 +4,8 @@ import { ImageArray } from '../shared/types';
 import { LocalDatabaseService } from '../shared/services/local-database/local-database.service';
 import { ImageFile } from '../shared/models/image-file';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Settings } from '../shared/settings';
 
 @Component({
   selector: 'app-image-gallery',
@@ -17,10 +19,23 @@ export class ImageGalleryComponent implements OnInit {
   modalRef: BsModalRef;
   saveError: any;
 
-  constructor(private modalService: BsModalService, private db:LocalDatabaseService) {}
+  constructor(private modalService: BsModalService, private db:LocalDatabaseService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.images = this.db.load();
+    this.route.params.subscribe(params => {
+      let page = params.page;
+      let numPages = Math.ceil(parseFloat(this.images.length.toString()) / Settings.ImagesPerPage);
+      if (page > numPages) {
+        page = numPages;
+        if (page) {
+          this.router.navigate(['/home', page]);
+        } else {
+          this.router.navigate(['/home']);
+        }
+        return;
+      }
+    });
   }
 
   onUploaded(uploadedImages: Array<ImageFile>) {
@@ -44,6 +59,7 @@ export class ImageGalleryComponent implements OnInit {
 
   removeAllImages() {
     this.images = this.db.clear();
-    this.modalRef.hide()
+    this.modalRef.hide();
+    this.router.navigate(['/home']);
   }
 }
