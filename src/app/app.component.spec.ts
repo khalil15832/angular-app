@@ -22,10 +22,10 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.year).toEqual(new Date().getFullYear());
   }));
-  it(`should have as isCollapsed false`, async(() => {
+  it(`should have as isCollapsed true`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.isCollapsed).toEqual(false);
+    expect(app.isCollapsed).toEqual(true);
   }));
   it('should render year in footer tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
