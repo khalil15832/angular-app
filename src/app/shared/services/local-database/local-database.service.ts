@@ -12,7 +12,11 @@ export class LocalDatabaseService {
   save(images: ImageArray): ImageArray {
     let currentImages = this.load();
     let allImages = images.concat(currentImages);
-    localStorage.setItem(this.imageGalleryKey, JSON.stringify(allImages));
+    try {
+      localStorage.setItem(this.imageGalleryKey, JSON.stringify(allImages));
+    } catch {
+      throw "Exceeded quota!";
+    }
     return allImages;
   }
 
@@ -21,8 +25,9 @@ export class LocalDatabaseService {
     return allImages ? JSON.parse(allImages) : [];
   }
 
-  clear() {
+  clear(): ImageArray {
     localStorage.removeItem(this.imageGalleryKey);
+    return [];
   }
 
   remove(imageId: string): ImageArray {

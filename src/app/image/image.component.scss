@@ -1,3 +1,5 @@
+@import "../../_variables.scss";
+
 .card {
   .card-link {
     cursor: pointer;
@@ -28,14 +30,13 @@
   .btn-remove {
     width: 50px;
     height: 50px;
-    margin-top: -40px;
-    margin-right: -40px;
+    @media (min-width: $largeScreenSize) {
+      margin-top: -40px;
+      margin-right: -40px;
+    }
   }
 
   .modal-title {
     word-break: break-all;
   }
 }
-
-
-

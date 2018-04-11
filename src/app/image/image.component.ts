@@ -49,13 +49,16 @@ export class ImageComponent implements OnChanges {
   }
 
   nextImage() {
-    ++this.imageIndex;
-    this.loadImage();
+    if (!this.nextDisabled) {
+      ++this.imageIndex;
+      this.loadImage();
+    }
   }
 
   prevImage() {
-    --this.imageIndex;
-    this.loadImage();
+    if (!this.prevDisabled) {
+      --this.imageIndex;
+      this.loadImage();
+    }
   }
-
 }

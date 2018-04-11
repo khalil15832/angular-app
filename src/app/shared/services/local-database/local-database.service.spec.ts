@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { LocalDatabaseService } from './local-database.service';
 
-describe('LocalDatabaseService', () => {
+xdescribe('LocalDatabaseService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [LocalDatabaseService]
