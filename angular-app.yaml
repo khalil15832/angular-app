@@ -7,8 +7,8 @@ spec:
   selector:
     app: angular-app
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 4200
+      targetPort: 4200
       nodePort: 30100
 ---
 apiVersion: apps/v1
@@ -31,4 +31,4 @@ spec:
         - name: angular-app
           image: khalil15832/angular-app:latest
           ports:
-            - containerPort: 80
+            - containerPort: 4200
